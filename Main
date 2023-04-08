@@ -1,0 +1,15 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Screens/Login/LoginScreens.dart';
+import 'package:flutter_application_1/Screens/Register/Registrasi.dart';
+import 'package:flutter_application_1/Screens/Register/RegisterScreens.dart';
+import 'package:flutter_application_1/routes.dart';
+import 'package:flutter_application_1/theme.dart';
+
+void main() async {
+  runApp(MaterialApp(
+    title: "Toko Gitar Keren",
+    theme: theme(),
+    initialRoute: LoginScreens.routeName,
+    routes: routes,
+  ));
+}
