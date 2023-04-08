@@ -1,0 +1,122 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Components/Home/HomeComponent.dart';
+import 'package:flutter_application_1/size_config.dart';
+import 'package:simple_shadow/simple_shadow.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_application_1/Components/Home/HomeForm.dart';
+import '../../utils/constants.dart';
+
+class HomeScreen extends StatefulWidget {
+  static String routeName = "/sign-up";
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+
+  final List<Widget> _children = [
+    HomeComponent(),
+    Container(
+      color: Colors.white,
+    ),
+    Container(
+      color: Colors.white,
+    ),
+    Container(
+      color: Colors.white,
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    SizeConfig().init(context);
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Text('Home'),
+      ),
+      body: Column(
+        children: [
+          HomeForm(),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(10)),
+              child: GridView.count(
+                crossAxisCount: 2,
+                children: [
+                  ProductCard(
+                    title: "Product 1",
+                    image: assetsimages('assets/images/guitar.png'),
+                    price: 10.0,
+                  ),
+                  ProductCard(
+                    title: "Product 2",
+                    image: assetsimages('assets/images/guitar.png'),
+                    price: 20.0,
+                  ),
+                  ProductCard(
+                    title: "Product 3",
+                    image: assetsimages('assets/images/icon.png'),
+                    price: 30.0,
+                  ),
+                  ProductCard(
+                    title: "Product 4",
+                    image: assetsimages('assets/images/icon.png'),
+                    price: 40.0,
+                  ),
+                  ProductCard(
+                    title: "Product 5",
+                    image: assetsimages('assets/images/icon.png'),
+                    price: 50.0,
+                  ),
+                  ProductCard(
+                    title: "Product 6",
+                    image: assetsimages('assets/images/icon.png'),
+                    price: 60.0,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: kPrimaryColor,
+        unselectedItemColor: kTextColor,
+        backgroundColor: Colors.white,
+        onTap: onTabTapped,
+        currentIndex: _currentIndex,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: 'Cart',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+      ),
+    );
+  }
+
+  void onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+}
+
+assetsimages(String s) {}
